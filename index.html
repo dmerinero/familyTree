@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="tree.css">
+    <script src="loadTree.js"></script>
+</head>
+<body onload="draw()">
+    <div class="screen">
+        <div id="tree" onscroll="zoomCanvas()" class="canvas"></div>
+        <div class="zoomButtons">
+            <button type="button" class="plus" onclick="zoomin()">+</button>
+            <button type="button" class="minus" onclick="zoomout()">-</button> 
+        </div>
+    </div>
+</body>

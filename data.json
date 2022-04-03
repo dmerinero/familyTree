@@ -1,0 +1,22 @@
+{
+    "value": {
+        "name": "David Merinero Haro"
+    },
+    "parents": [
+        {
+            "value": {
+                "name": "Luis Miguel Merinero Diaz"
+            },
+            "parents": [],
+            "children": []
+        },
+        {
+            "value": {
+                "name": "Evangelina Haro Guerrero"
+            },
+            "parents": [],
+            "children": []
+        }
+    ],
+    "children": []
+}

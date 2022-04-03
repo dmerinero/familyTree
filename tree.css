@@ -1,0 +1,58 @@
+body {
+    margin: 0px;
+}
+
+div.screen {
+    position: relative;
+    min-width: 100vw;
+    max-width: 100vw;
+
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+div.canvas {
+    position: absolute;
+
+    min-width: calc(100% - 1rem * 2);
+    max-width: calc(100% - 1rem * 2);
+
+    min-height: calc(100% - 1rem * 2);
+    max-height: calc(100% - 1rem * 2);
+
+    border: 1rem groove green;
+
+    overflow: scroll;
+}
+
+div.zoomButtons {
+    z-index: 90;
+
+    min-width: 3em;
+    max-width: 5em;
+
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+.minus, .plus {
+    background-color: beige;
+    position: relative;
+
+    min-height: 3em;
+    max-height: 5em;
+
+    width: 100%;
+}
+.plus {
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+
+    bottom: 0;
+}
+.minus {
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+
+    top: 0;
+}
