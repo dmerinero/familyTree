@@ -5,7 +5,9 @@
 </head>
 <body onload="draw()">
     <div class="screen">
-        <div id="tree" onscroll="zoomCanvas()" class="canvas"></div>
+        <div id="tree" class="canvas">
+            <div id="mockUp" class="imageExample"></div>
+        </div>
         <div class="zoomButtons">
             <button type="button" class="plus" onclick="zoomin()">+</button>
             <button type="button" class="minus" onclick="zoomout()">-</button> 

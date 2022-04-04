@@ -4,6 +4,7 @@ body {
 
 div.screen {
     position: relative;
+
     min-width: 100vw;
     max-width: 100vw;
 
@@ -25,6 +26,16 @@ div.canvas {
     overflow: scroll;
 }
 
+div.imageExample {
+    background-image: url('https://www.xtrafondos.com/wallpapers/ola-de-colores-6815.jpg');
+    width: 100vw;
+    height: 100vh;
+}
+
+svg, div.imageExample {
+    cursor: move;
+}
+
 div.zoomButtons {
     z-index: 90;
 
@@ -36,6 +47,8 @@ div.zoomButtons {
     right: 1rem;
 }
 .minus, .plus {
+    cursor: pointer;
+
     background-color: beige;
     position: relative;
 

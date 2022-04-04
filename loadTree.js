@@ -12,7 +12,7 @@ function openDataFile(xobj) {
         }
         xobj.send(null);
 
-        setTimeout(reject, 10 * 1000, 'Timeout!');
+        setTimeout(reject, 10000, 'Timeout!');
     })
     .catch((response) => {
         console.log(`Error al abrir el fichero de datos${response ? `: ${response}` : ''}`);
@@ -37,16 +37,20 @@ async function getData(file = 'data.json') {
 function draw() {
     var ns = 'http://www.w3.org/2000/svg';
     var div = document.getElementById('tree')
+    setWheelZoom(document.getElementById('mockUp'));
+    // svg = div.children[0];
 
-    drawCanvas(ns, div)
-    .then(() => drawRect(ns))
+    // drawCanvas(ns, div)
+    // .then(() => drawRect(ns))
 }
 
 function drawCanvas(ns, canvas) {
     svg = document.createElementNS(ns, 'svg')
 
-    svg.setAttributeNS(null, 'width', '100%')
-    svg.setAttributeNS(null, 'height', '100%')
+    setWheelZoom(svg)
+
+    svg.setAttributeNS(null, 'width', 1920)
+    svg.setAttributeNS(null, 'height', 1080)
     canvas.appendChild(svg)
 
     return Promise.resolve();
@@ -55,25 +59,44 @@ function drawCanvas(ns, canvas) {
 function drawRect(ns) {
     var rect = document.createElementNS(ns, 'rect')
 
-    rect.setAttributeNS(null, 'width', 100)
-    rect.setAttributeNS(null, 'height', 100)
+    rect.setAttributeNS(null, 'width', 1920)
+    rect.setAttributeNS(null, 'height', 1080)
     rect.setAttributeNS(null, 'fill', 'red')
 
     svg.appendChild(rect)
 }
 
+// ZOOM
 const zoomValue = 100;
+var scale = 0.001;
 
-function zoomCanvas(input) {
+function setWheelZoom(elem) {
+    elem.onwheel = zoomWithScroll
+}
 
+function zoomWithScroll(event) {
+    event.preventDefault();
+    console.log(event)
+    zoom(event.deltaY, event.target);
+}
+
+function zoom(deltaY, elem = svg) {
+    scale += deltaY * -0.01;
+
+    // Restricción de escala
+    scale = Math.min(Math.max(1, scale), 4);
+
+    // Aplicar transformación de escala
+    elem.style.transform = `scale(${scale})`;
 }
 
 function zoomin() {
-    svg.style.width = (svg.clientWidth + zoomValue) + "px";
-    svg.style.height = (svg.clientHeigth + zoomValue) + "px";
+    zoom(-zoomValue);
 }
-  
+
 function zoomout() {
-    svg.style.width = (svg.clientWidth - zoomValue) + "px";
-    svg.style.height = (svg.clientHeigth - zoomValue) + "px";
+    zoom(zoomValue);
 }
+
+// DRAG SVG
+
